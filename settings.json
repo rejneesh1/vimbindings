@@ -37,7 +37,7 @@
   // Enable and configure yank highlighting
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 200,
-  // Customize search highlight color
+  // Customize search highlight color 
   "vim.searchHighlightColor": "rgba(180, 142, 173, 0.5)",
   // Don't start on the first line of a file
   "vim.startup.firstline": false,
@@ -46,9 +46,9 @@
   // Enable status bar color control based on Vim mode
   "vim.statusBarColorControl": true,
   // Define colors for different Vim modes
-  "vim.statusBarColors.normal": "#519aba",
-  "vim.statusBarColors.insert": "#98c379",
-  "vim.statusBarColors.visual": "#c678dd",
+  "vim.statusBarColors.normal": "#282c39",
+  "vim.statusBarColors.insert": "#654h09",
+  "vim.statusBarColors.visual": "#992c39",
   "vim.statusBarColors.visualline": "#c678dd",
   "vim.statusBarColors.visualblock": "#c678dd",
   "vim.statusBarColors.replace": "#e06c75",
@@ -380,5 +380,5 @@
   // GitLens AI Settings
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "workbench.colorTheme": "Theme Darker",
+  "workbench.colorTheme": "Abyss",
 }
