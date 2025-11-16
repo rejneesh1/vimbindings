@@ -1,4 +1,3 @@
-
 {
   // Editor Settings
   // Display line numbers relative to the current cursor position
@@ -16,7 +15,6 @@
   // Configure minimap for better performance and visibility
   "editor.minimap.renderCharacters": false,
   "editor.minimap.scale": 2,
-
   // Vim Configuration
   // Enable easymotion plugin for quick navigation
   "vim.easymotion": true,
@@ -43,7 +41,6 @@
   "vim.searchHighlightColor": "rgba(180, 142, 173, 0.5)",
   // Don't start on the first line of a file
   "vim.startup.firstline": false,
-
   // #TODO: experimenting with those
   // Status Line Integration
   // Enable status bar color control based on Vim mode
@@ -55,7 +52,6 @@
   "vim.statusBarColors.visualline": "#c678dd",
   "vim.statusBarColors.visualblock": "#c678dd",
   "vim.statusBarColors.replace": "#e06c75",
-
   // Handle specific keys
   "vim.handleKeys": {
     // Keep Ctrl+d for scrolling down
@@ -135,8 +131,14 @@
     },
     {
       // Close current file with leader+w+c
-      "before": ["<leader>", "w", "c"],
-      "commands": ["workbench.action.closeActiveEditor"]
+      "before": [
+        "<leader>",
+        "w",
+        "c"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     },
     // Sidebar and Explorer
     {
@@ -291,10 +293,92 @@
         "workbench.action.terminal.focus"
       ]
     }
-],
-"workbench.colorCustomizations": {
-  "statusBar.background": "#c678dd",
-  "statusBar.noFolderBackground": "#c678dd",
-  "statusBar.debuggingBackground": "#c678dd"
-},
-}    
+  ],
+
+  // Color Customizations
+
+  "workbench.colorCustomizations": {
+    "tab.activeBackground": "#282c34",
+    "activityBar.background": "#282c34",
+    "sideBar.background": "#282c34",
+    "statusBar.background": "#c678dd",
+    "statusBar.noFolderBackground": "#c678dd",
+    "statusBar.debuggingBackground": "#c678dd"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          // the following elements will be in italic
+          "comment",
+          "storage.modifier", // static keyword
+          "storage.type.php", // typehints in methods keyword
+          "keyword.other.new.php", // new
+          "entity.other.attribute-name", // html attributes
+          "fenced_code.block.language.markdown", // markdown language modifier
+          "keyword", //import, export, return…
+          "storage.modifier", //static keyword
+          "storage.type", //class keyword
+          "keyword.control",
+          "constant.language",
+          "entity.other.attribute-name",
+          "entity.name.method",
+          "keyword.control.import.ts",
+          "keyword.control.import.tsx",
+          "keyword.control.import.js",
+          "keyword.control.flow.js",
+          "keyword.control.from.js",
+          "keyword.control.from.ts",
+          "keyword.control.from.tsx"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          // the following elements will be displayed in bold
+          "entity.name.type.class" // class names
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      },
+      {
+        "scope": [
+          // the following elements will be displayed in bold and italic
+          "entity.name.section.markdown" // markdown headlines
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          // the following elements will be excluded from italics
+          //   (VSCode has some defaults for italics)
+          "invalid",
+          "keyword.operator",
+          "constant.numeric.css",
+          "keyword.other.unit.px.css",
+          "constant.numeric.decimal.js",
+          "constant.numeric.json",
+          "comment.block",
+          "entity.other.attribute-name.class.css"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  },
+  // Other Settings
+  "editor.fontSize": 16,
+  "editor.lineHeight": 22,
+  "editor.fontFamily": "Operator Mono Lig",
+
+  // GitLens AI Settings
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "workbench.colorTheme": "Theme Darker",
+}
