@@ -1,70 +1,52 @@
 {
-  // Editor Settings
-  // Display line numbers relative to the current cursor position
+  // EDITOR
   "editor.lineNumbers": "relative",
-  // Prevent scrolling beyond the last line of the file
   "editor.scrollBeyondLastLine": false,
-  // Keep 8 lines visible above and below the cursor when scrolling
   "editor.cursorSurroundingLines": 8,
-  // Enable smooth scrolling animation
   "editor.smoothScrolling": true,
-  // Enable bracket pair colorization for better readability
   "editor.bracketPairColorization.enabled": true,
-  // Show vertical lines for bracket pairs
   "editor.guides.bracketPairs": true,
-  // Configure minimap for better performance and visibility
   "editor.minimap.renderCharacters": false,
-  "editor.minimap.scale": 2,
-  // Vim Configuration
-  // Enable easymotion plugin for quick navigation
+  "editor.minimap.scale": 1,
+  "editor.fontSize": 16,
+  "editor.lineHeight": 22,
+  "editor.fontFamily": "Operator Mono Lig",
+  "editor.accessibilitySupport": "off",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line",
+  // VIM CORE
   "vim.easymotion": true,
-  // Enable incremental search highlighting
   "vim.incsearch": true,
-  // Use system clipboard for vim operations
   "vim.useSystemClipboard": true,
-  // Enable Ctrl key combinations
   "vim.useCtrlKeys": true,
-  // Enable search highlight
   "vim.hlsearch": true,
-  // Set space as the leader key
   "vim.leader": " ",
-  // Enable vim-sneak plugin for improved motion
   "vim.sneak": true,
-  // Use relative line numbers in normal mode
   "vim.smartRelativeLine": true,
-  // Fix common fold-related issues
   "vim.foldfix": true,
-  // Enable and configure yank highlighting
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.duration": 200,
-  // Customize search highlight color 
   "vim.searchHighlightColor": "rgba(180, 142, 173, 0.5)",
-  // Don't start on the first line of a file
-  "vim.startup.firstline": false,
-  // #TODO: experimenting with those
-  // Status Line Integration
-  // Enable status bar color control based on Vim mode
+  // VIM STATUS BAR
   "vim.statusBarColorControl": true,
-  // Define colors for different Vim modes
   "vim.statusBarColors.normal": "#282c39",
   "vim.statusBarColors.insert": "#654h09",
   "vim.statusBarColors.visual": "#992c39",
   "vim.statusBarColors.visualline": "#c678dd",
   "vim.statusBarColors.visualblock": "#c678dd",
   "vim.statusBarColors.replace": "#e06c75",
-  // Handle specific keys
+  // VIM KEY HANDLING
   "vim.handleKeys": {
-    // Keep Ctrl+d for scrolling down
     "<C-d>": true,
-    // Keep Ctrl+u for scrolling up
     "<C-u>": true,
-    // Disable Ctrl+f to use VS Code's find instead
     "<C-f>": false
   },
-  // Insert Mode Keybindings
+  // VIM INSERT MODE
   "vim.insertModeKeyBindings": [
     {
-      // Exit insert mode by pressing 'j' twice quickly
       "before": [
         "j",
         "j"
@@ -74,22 +56,10 @@
       ]
     }
   ],
-  // Normal Mode Keybindings
+  // VIM NORMAL MODE
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Basic Operations
+    // BASIC
     {
-      // Delete current line with leader+d
-      "before": [
-        "<leader>",
-        "d"
-      ],
-      "after": [
-        "d",
-        "d"
-      ]
-    },
-    {
-      // Clear search highlighting with Ctrl+n
       "before": [
         "<C-n>"
       ],
@@ -97,19 +67,39 @@
         ":nohl"
       ]
     },
+    // FOLDING
     {
-      // Insert line break above cursor with K
       "before": [
-        "K"
+        "<leader>",
+        "z",
+        "a"
       ],
       "commands": [
-        "lineBreakInsert"
-      ],
-      "silent": true
+        "editor.foldAll"
+      ]
     },
-    // Window Management
     {
-      // Split editor with leader+w
+      "before": [
+        "<leader>",
+        "z",
+        "o"
+      ],
+      "commands": [
+        "editor.unfoldAll"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "z",
+        "c"
+      ],
+      "commands": [
+        "editor.fold"
+      ]
+    },
+    // alt+shiftDOW MANAGEMENT
+    {
       "before": [
         "<leader>",
         "w"
@@ -119,7 +109,6 @@
       ]
     },
     {
-      // Save current file with leader+w+w
       "before": [
         "<leader>",
         "w",
@@ -130,7 +119,6 @@
       ]
     },
     {
-      // Close current file with leader+w+c
       "before": [
         "<leader>",
         "w",
@@ -140,31 +128,29 @@
         "workbench.action.closeActiveEditor"
       ]
     },
-    // Sidebar and Explorer
     {
-      // Toggle sidebar and focus explorer with leader+e
+      "before": [
+        "<leader>",
+        "w",
+        "q"
+      ],
+      "commands": [
+        "workbench.action.revertAndCloseActiveEditor"
+      ]
+    },
+    // SIDEBAR
+    {
+      // open file explorer
       "before": [
         "<leader>",
         "e"
       ],
       "commands": [
-        "workbench.action.toggleSidebarVisibility",
-        // "workbench.files.action.focusFilesExplorer" // #TODO: dosent work as expected
+        "workbench.view.explorer"
       ]
     },
+    // FILE OPERATIONS
     {
-      // Reveal current file in explorer with leader+f
-      "before": [
-        "<leader>",
-        "f"
-      ],
-      "commands": [
-        "revealInExplorer"
-      ]
-    },
-    // File Operations
-    {
-      // Copy current file path with leader+f+y
       "before": [
         "<leader>",
         "f",
@@ -175,7 +161,6 @@
       ]
     },
     {
-      // Create new file in current directory with leader+f+n
       "before": [
         "<leader>",
         "f",
@@ -185,56 +170,97 @@
         "explorer.newFile"
       ]
     },
-    // Code Actions
     {
-      // Toggle line comment with leader+c
       "before": [
         "<leader>",
-        "c"
+        "f",
+        "f"
       ],
       "commands": [
-        "editor.action.commentLine"
+        "workbench.action.quickOpen"
       ]
     },
-    // #TODO: confirm the following
-    // {
-    //   // Rename symbol with leader+r+e
-    //   "before": [
-    //     "<leader>",
-    //     "r",
-    //     "e"
-    //   ],
-    //   "commands": [
-    //     "editor.action.rename"
-    //   ]
-    // },
-    // {
-    //   // Rename file with leader+r+f
-    //   "before": [
-    //     "<leader>",
-    //     "r",
-    //     "f"
-    //   ],
-    //   "commands": [
-    //     "fileutils.renameFile"
-    //   ]
-    // }
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "g"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "f",
+        "b"
+      ],
+      "commands": [
+        "workbench.action.showAllEditors"
+      ]
+    },
+    // CODE ACTIONS
+    {
+      "before": [
+        "<leader>",
+        "g",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ]
+    },
+    // NAVIGATION
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "commands": [
+        "workbench.action.navigateBack"
+      ]
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
+      ]
+    },
+    // HARPOON
+    {
+      "before": [
+        "<leader>",
+        "a"
+      ],
+      "commands": [
+        "vscode-harpoon.addEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "h"
+      ],
+      "commands": [
+        "vscode-harpoon.editorQuickPick"
+      ]
+    }
   ],
-  // Visual Mode Keybindings
+  // VIM VISUAL MODE
   "vim.visualModeKeyBindings": [
     {
-      // Comment selected lines and exit visual mode with leader+c
-      "before": [
-        "<leader>",
-        "c"
-      ],
-      "commands": [
-        "editor.action.commentLine",
-        "extension.vim_escape"
-      ]
-    },
-    {
-      // Select all occurrences of current selection with leader+a
       "before": [
         "<leader>",
         "a"
@@ -244,18 +270,6 @@
       ]
     },
     {
-      // Sort selected lines
-      "before": [
-        "<leader>",
-        "s",
-        "s"
-      ],
-      "commands": [
-        "editor.action.sortLinesAscending"
-      ]
-    },
-    {
-      // Transform to uppercase
       "before": [
         "<leader>",
         "u"
@@ -265,7 +279,6 @@
       ]
     },
     {
-      // Transform to lowercase
       "before": [
         "<leader>",
         "l"
@@ -275,10 +288,9 @@
       ]
     }
   ],
-  // Multi-command Configuration
+  // MULTI-COMMAND
   "multiCommand.commands": [
     {
-      // Toggle maximized terminal panel and focus terminal
       "command": "multiCommand.toggleMaximizedPanelAndFocusTerminal",
       "sequence": [
         "workbench.action.toggleMaximizedPanel",
@@ -286,42 +298,61 @@
       ]
     },
     {
-      // Create new terminal and focus it
-      "command": "multiCommand.newTerminalAndFocus",
+      "command": "multiCommand.closeAllBars",
       "sequence": [
-        "workbench.action.terminal.new",
-        "workbench.action.terminal.focus"
+        "workbench.action.closeSidebar",
+        "workbench.action.closePanel",
+        "workbench.action.closeAuxiliaryBar"
+      ]
+    },
+    {
+      "command": "multiCommand.closeAuxAndFocusEditor",
+      "sequence": [
+        "workbench.action.closeAuxiliaryBar",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    {
+      "command": "multiCommand.closeSideBarAndFocusEditor",
+      "sequence": [
+        "workbench.action.closeSidebar",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    {
+      "command": "multiCommand.closeTerminalAndFocusEditor",
+      "sequence": [
+        "workbench.action.closePanel",
+        "workbench.action.focusActiveEditorGroup"
       ]
     }
   ],
-
-  // Color Customizations
-
+  // APPEARANCE
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.tree.indent": 30,
+  "alt+shiftdow.zoomLevel": 0.75,
   "workbench.colorCustomizations": {
-    "tab.activeBackground": "#282c34",
-    "activityBar.background": "#282c34",
-    "sideBar.background": "#282c34",
     "statusBar.background": "#c678dd",
     "statusBar.noFolderBackground": "#c678dd",
-    "statusBar.debuggingBackground": "#c678dd"
+    "statusBar.debuggingBackground": "#c678dd",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.debuggingForeground": "#ffffff"
   },
+  // FONT STYLING
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
         "scope": [
-          // the following elements will be in italic
           "comment",
-          "storage.modifier", // static keyword
-          "storage.type.php", // typehints in methods keyword
-          "keyword.other.new.php", // new
-          "entity.other.attribute-name", // html attributes
-          "fenced_code.block.language.markdown", // markdown language modifier
-          "keyword", //import, export, return…
-          "storage.modifier", //static keyword
-          "storage.type", //class keyword
+          "storage.modifier",
+          "storage.type.php",
+          "keyword.other.new.php",
+          "entity.other.attribute-name",
+          "fenced_code.block.language.markdown",
+          "keyword",
+          "storage.type",
           "keyword.control",
           "constant.language",
-          "entity.other.attribute-name",
           "entity.name.method",
           "keyword.control.import.ts",
           "keyword.control.import.tsx",
@@ -332,13 +363,12 @@
           "keyword.control.from.tsx"
         ],
         "settings": {
-          "fontStyle": "italic"
+          "fontStyle": "italic",
         }
       },
       {
         "scope": [
-          // the following elements will be displayed in bold
-          "entity.name.type.class" // class names
+          "entity.name.type.class"
         ],
         "settings": {
           "fontStyle": ""
@@ -346,8 +376,7 @@
       },
       {
         "scope": [
-          // the following elements will be displayed in bold and italic
-          "entity.name.section.markdown" // markdown headlines
+          "entity.name.section.markdown"
         ],
         "settings": {
           "fontStyle": "italic"
@@ -355,8 +384,6 @@
       },
       {
         "scope": [
-          // the following elements will be excluded from italics
-          //   (VSCode has some defaults for italics)
           "invalid",
           "keyword.operator",
           "constant.numeric.css",
@@ -372,13 +399,30 @@
       }
     ]
   },
-  // Other Settings
-  "editor.fontSize": 16,
-  "editor.lineHeight": 22,
-  "editor.fontFamily": "Operator Mono Lig",
-
-  // GitLens AI Settings
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "workbench.colorTheme": "Abyss",
+  // FORMATTERS
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // MISC
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false,
+  "diffEditor.experimental.showMoves": true,
+  "diffEditor.renderSideBySide": true,
+  //
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.focusActiveEditorGroup",
+    "workbench.action.focusSideBar",
+    "multiCommand.closeSideBarAndFocusEditor",
+    "workbench.action.focusAuxiliaryBar",
+    "multiCommand.closeAuxAndFocusEditor",
+    "workbench.action.terminal.toggleTerminal",
+    "multiCommand.closeTerminalAndFocusEditor",
+    "multiCommand.toggleMaximizedPanelAndFocusTerminal",
+    "workbench.action.increaseViewSize",
+    "workbench.action.decreaseViewSize",
+    "workbench.action.increaseViewWidth",
+    "workbench.action.decreaseViewWidth"
+  ]
 }
